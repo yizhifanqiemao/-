@@ -18,19 +18,19 @@ local function test(name, aliases, callback)
 
 	task.spawn(function()
 		if not callback then
-			print("⏺️ " .. name)
+			print("通过 " .. name)
 		elseif not getGlobal(name) then
 			fails += 1
-			warn("⛔ " .. name)
+			warn("答辩 " .. name)
 		else
 			local success, message = pcall(callback)
 	
 			if success then
 				passes += 1
-				print("✅ " .. name .. (message and " • " .. message or ""))
+				print("通过 " .. name .. (message and " • " .. message or ""))
 			else
 				fails += 1
-				warn("⛔ " .. name .. " failed: " .. message)
+				warn("答辩 " .. name .. " failed: " .. message)
 			end
 		end
 	
@@ -44,7 +44,7 @@ local function test(name, aliases, callback)
 	
 		if #undefinedAliases > 0 then
 			undefined += 1
-			warn("⚠️ " .. table.concat(undefinedAliases, ", "))
+			warn("有点小毛病 " .. table.concat(undefinedAliases, ", "))
 		end
 
 		running -= 1
@@ -55,8 +55,8 @@ end
 
 print("\n")
 
-print("UNC Environment Check")
-print("✅ - Pass, ⛔ - Fail, ⏺️ - No test, ⚠️ - Missing aliases\n")
+print("牢茄的UNC测试")
+print("通过 - Pass, 答辩 - Fail, 没有应答 - No test, 有点小毛病 - Missing aliases\n")
 
 task.defer(function()
 	repeat task.wait() until running == 0
@@ -66,10 +66,10 @@ task.defer(function()
 
 	print("\n")
 
-	print("UNC Summary")
-	print("✅ Tested with a " .. rate .. "% success rate (" .. outOf .. ")")
-	print("⛔ " .. fails .. " tests failed")
-	print("⚠️ " .. undefined .. " globals are missing aliases")
+	print("牢茄的UNC测试")
+	print("通过 Tested with a " .. rate .. "% success rate (" .. outOf .. ")")
+	print("答辩 " .. fails .. " tests failed")
+	print("有点小毛病 " .. undefined .. " globals are missing aliases")
 end)
 
 -- Cache
